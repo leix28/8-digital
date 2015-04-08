@@ -104,6 +104,8 @@ int main(int argc, char **argv) {
   board.setStatus(st);
   que.push(std::make_pair(-board.predict() / 2, st));
 
+
+  //Here is the A* search
   while (!que.empty()) {
     std::pair<int, int> now = que.top();
     int step = hashTable[now.second].first;
@@ -125,6 +127,7 @@ int main(int argc, char **argv) {
       board.move((dir + 2) % 4);
     }
   }
+  
   if (hashTable.find(ed) == hashTable.end()) {
     std::cout << "no solution" << std::endl;
     exit(0);
